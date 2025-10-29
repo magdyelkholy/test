@@ -1,14 +1,20 @@
-name: First Workflow
-
 on:
-  push:
-    branches:
-      - main
-
+    push:
+        branches:
+            - main
+            -"release/**"
+        paths:
+            -"src/**"
+    pull_request:
+        branches:
+            - main
+            - "release/**"
 jobs:
-  example-job:
-    runs-on: ubuntu-latest
+    test:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout code
+        - uses: actions/checkout@v5.0.0
 
-    steps:
-      - name: Print a welcome message
-        run: echo "Welcome to our first GitHub Actions Workflow!"
+        - name: run Test
+          run: npm test
