@@ -26,10 +26,10 @@ jobs:
           echo "Workspace: $GITHUB_WORKSPACE"
           pwd
           ls -la
-          ls -la /src/app || true
+          ls -la /src/ || true
     
       - name: Install deps and run tests (adjust working-directory if needed)
-        working-directory: /src/app   # ← أزل أو عدّل هذا السطر إذا package.json في الجذر
+        working-directory: /src/   # ← أزل أو عدّل هذا السطر إذا package.json في الجذر
         run: |
           if [ -f package.json ]; then
             echo "Using npm ci"
@@ -40,6 +40,7 @@ jobs:
           fi
           npm test
       
+
 
 
 
