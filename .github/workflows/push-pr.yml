@@ -1,46 +1,31 @@
-name: Run Tests
+name: Node.js Scan Workflow
 
 on:
   push:
     branches:
       - main
-      - "release/**"
   pull_request:
     branches:
       - main
-      - "release/**"
+  workflow_dispatch: {}
 
 jobs:
-  test:
+  scan:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-      - name: Debug repo
-        run: |
-          echo "Workspace: $GITHUB_WORKSPACE"
-          pwd
-          ls -la
-          ls -la /src/ || true
-    
-      - name: Install deps and run tests (adjust working-directory if needed)
-        working-directory: /src/   # ← أزل أو عدّل هذا السطر إذا package.json في الجذر
-        run: |
-          if [ -f package.json ]; then
-            echo "Using npm ci"
-            npm ci
-          else
-            echo "Using npm install"
-            npm install
-          fi
-          npm test
-      
+          node-version: '20'  # عدل حسب نسختك
 
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./src   # هنا مجلد src
 
-
-
+      - name: Run scan
+        run: npm run scan
+        working-directory: ./src   # نفس المجلد
