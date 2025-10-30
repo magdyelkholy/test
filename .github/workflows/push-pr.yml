@@ -5,12 +5,11 @@ on:
     branches:
       - main
       - "release/**"
-    paths:
-      - "src/**"
   pull_request:
     branches:
       - main
       - "release/**"
+
 jobs:
   test:
     runs-on: ubuntu-latest
