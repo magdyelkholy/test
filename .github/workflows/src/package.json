@@ -1,0 +1,11 @@
+{
+  "name": "hello-magdy-app",
+  "version": "1.0.0",
+  "description": "A simple Node.js app that returns Hello messages and includes a test script.",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "bash src/test.sh"
+  },
+  
+  "devDependencies": {}
+}

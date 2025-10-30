@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - "release/**"
-    path:
+    paths:            # صححت من path إلى paths
       - "src/**"
   pull_request:
     branches:
@@ -19,5 +19,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Setup Node.js environment
-         uses: actions/setup-node@v6.0.0
+      - name: Run Test
+        uses: npm test    
