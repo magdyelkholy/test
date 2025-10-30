@@ -31,7 +31,7 @@ jobs:
       - name: Install deps and run tests (adjust working-directory if needed)
         working-directory: ./app   # ← أزل أو عدّل هذا السطر إذا package.json في الجذر
         run: |
-          if [ -f package-lock.json ]; then
+          if [ -f package.json ]; then
             echo "Using npm ci"
             npm ci
           else
@@ -40,3 +40,4 @@ jobs:
           fi
           npm test
       
+
