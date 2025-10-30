@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - main
-      - "release/**"
-    paths:
-      -"src/**"
+  pull_request:
+    branches:
+      - main
   workflow_dispatch: {}
 
 jobs:
@@ -23,8 +23,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./   # <-- هنا جذر المشروع
+        working-directory: ./   # ← تأكد أن هذا يشير لمكان package.json
 
       - name: Run tests
         run: npm test
-        working-directory: ./   # <-- نفس المسار
+        working-directory: ./   # ← نفس المجلد
