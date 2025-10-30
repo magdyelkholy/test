@@ -4,6 +4,7 @@ on:
       - main
     paths:
       - "src/**"
+      - "release/**"
   pull_request:
     branches:
       - main
@@ -17,4 +18,3 @@ jobs:
 
       - name: Run tests
         run: npm test
-
