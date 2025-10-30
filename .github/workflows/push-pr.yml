@@ -23,7 +23,7 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: cd src && npm install
+        run: npm install
 
       - name: Run Test
-        run: cd src && npm test
+        run: npm test
