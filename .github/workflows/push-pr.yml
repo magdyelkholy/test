@@ -21,8 +21,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-
-      - name: Run Test
-        run: npm test
-
-
+      - name: Debug repo
+        run: |
+          echo "Workspace: $GITHUB_WORKSPACE"
+          pwd
+          ls -la
+          ls -la ./app || true
+    
+      - name: Install deps and run tests (adjust working-directory if needed)
+        working-directory: ./app   # ← أزل أو عدّل هذا السطر إذا package.json في الجذر
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Using npm ci"
+            npm ci
+          else
+            echo "Using npm install"
+            npm install
+          fi
+          npm test
+      
