@@ -4,18 +4,14 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "src/**"
-      - "release/**"
   pull_request:
     branches:
       - main
-      - "release/**"
+  workflow_dispatch: {}
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
